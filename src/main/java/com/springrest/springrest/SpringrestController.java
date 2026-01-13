@@ -9,6 +9,12 @@ import com.springrest.entities.Course;
 import com.springrest.springrest.services.CourseService;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
 
 
 @RestController
@@ -20,7 +26,12 @@ public class SpringrestController {
    public List<Course> getCourses(){
       return this.courseSer.getCourses();
     }
-    
-    
-    
+    @GetMapping("/courses/{courseId}")    
+    public Course getCourse (@PathVariable long courseId){
+        return this.courseSer.getCourse(courseId);
+    }
+    @PostMapping("/courses")
+    public Course addCourse (@RequestBody Course course ) {
+        return this.courseSer.addCourse(course);
+    } 
 }

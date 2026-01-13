@@ -19,4 +19,18 @@ public class CourseServiceimpl implements CourseService {
     public List<Course> getCourses(){
     return list;
     }
+    public Course getCourse(long courseId){
+        Course c = null;
+        for (Course course : list) {
+            if(course.getId()==courseId){
+                c=course;
+                break;
+            }    
+        }
+        return c;
+    }
+    public Course addCourse (Course course){
+        list.add(course);
+        return course;
+    }
 }
