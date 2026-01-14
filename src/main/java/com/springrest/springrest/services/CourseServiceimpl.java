@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 import com.springrest.entities.Course;
  @Service
-public class CourseServiceimpl implements CourseService {
+public class CourseServiceImpl implements CourseService {
     List<Course> list;
 
-    public CourseServiceimpl() {
+    public  void CourseServiceimpl() {
         list = new ArrayList<>();
         list.add(new Course(145, "Java Core", "this course contains java basics concept"));
         list.add(new Course(434, "Spring Boot", "learning rest API"));
@@ -33,4 +33,21 @@ public class CourseServiceimpl implements CourseService {
         list.add(course);
         return course;
     }
+    
+    public Course updateCourse (Course course){
+            list.forEach(e ->{
+                   if (e.getId() == course.getId()) {
+                     e.setTitle(course.getTitle());
+                     e.setDescription(course.getDescription());
+                   }
+        });
+        return course;
+    }
+
+    public void deleteCourse(long courseId){
+     list.removeIf(course -> course.getId() == courseId);
+    }
 }
+
+
+
